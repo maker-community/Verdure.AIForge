@@ -11,8 +11,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.2.7" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Scalar.AspNetCore" />
 
+
+	<PackageReference Include="BotSharp.Logger" />
+	<PackageReference Include="BotSharp.OpenAPI" />
+	<PackageReference Include="BotSharp.Plugin.Dashboard" />
+	<PackageReference Include="BotSharp.Plugin.AzureOpenAI" />
+	<PackageReference Include="BotSharp.Plugin.GoogleAI" />
+	<PackageReference Include="BotSharp.Plugin.HuggingFace" />
+	<PackageReference Include="BotSharp.Plugin.KnowledgeBase" />
+	<PackageReference Include="BotSharp.Plugin.MetaAI" />
+	<PackageReference Include="BotSharp.Plugin.LLamaSharp" />
+	<PackageReference Include="BotSharp.Plugin.ChatHub" />
+  </ItemGroup>
+	<Target Name="CombinedNugetPackage" BeforeTargets="PrepareForRun" Condition="$(SolutionName)=='Verdure.AIForge'">
+		<ItemGroup>
+			<CoreContentFiles Include="$(NuGetPackageRoot)botsharp.core\$(BotSharpVersion)\content\data\**\*.*" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(CoreContentFiles)" DestinationFolder="$(OutputPath)data\%(RecursiveDir)" />
+	</Target>
 </Project>
