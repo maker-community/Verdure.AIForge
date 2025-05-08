@@ -4,7 +4,18 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>1820ac00-c9f9-4bef-93bc-3288711d6213</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MyData.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MyData.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Verdure.AIForge.ServiceDefaults\Verdure.AIForge.ServiceDefaults.csproj" />
@@ -25,6 +36,8 @@
 	<PackageReference Include="BotSharp.Plugin.MetaAI" />
 	<PackageReference Include="BotSharp.Plugin.LLamaSharp" />
 	<PackageReference Include="BotSharp.Plugin.ChatHub" />
+	<PackageReference Include="BotSharp.Plugin.LiteDBStorage" /> 
+	  
   </ItemGroup>
 	<Target Name="CombinedNugetPackage" BeforeTargets="PrepareForRun" Condition="$(SolutionName)=='Verdure.AIForge'">
 		<ItemGroup>

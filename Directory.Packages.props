@@ -139,6 +139,7 @@
     <PackageVersion Include="BotSharp.Plugin.MetaAI" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Plugin.LLamaSharp" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Plugin.ChatHub" Version="$(BotSharpVersion)" />
+    <PackageVersion Include="BotSharp.Plugin.LiteDBStorage" Version="$(BotSharpVersion)" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.14" />
