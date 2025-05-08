@@ -7,4 +7,10 @@ builder.AddProject<Projects.Verdure_AIForge_Web>("webfrontend")
     .WithReference(apiService)
     .WaitFor(apiService);
 
+builder.AddNpmApp("BotSharpUI", "../../../BotSharp-UI")
+    .WithReference(apiService)
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
+
 builder.Build().Run();
