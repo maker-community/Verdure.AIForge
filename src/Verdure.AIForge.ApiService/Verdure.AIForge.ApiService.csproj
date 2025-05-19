@@ -9,15 +9,20 @@
 
   <ItemGroup>
     <None Remove="MyData.db" />
+    <None Remove="silero_vad.onnx" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="MyData.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="silero_vad.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Plugins\BotSharp.Plugin.IoTServer\BotSharp.Plugin.IoTServer.csproj" />
     <ProjectReference Include="..\Verdure.AIForge.ServiceDefaults\Verdure.AIForge.ServiceDefaults.csproj" />
   </ItemGroup>
 

@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verdure.AIForge.ServiceDefa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verdure.AIForge.Web", "src\Verdure.AIForge.Web\Verdure.AIForge.Web.csproj", "{62391542-1A9E-A715-384A-BC891399B8A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotSharp.Plugin.IoTServer", "src\Plugins\BotSharp.Plugin.IoTServer\BotSharp.Plugin.IoTServer.csproj", "{4A40F934-2E97-43A5-AD27-7E7B9CF9409D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +36,16 @@ Global
 		{62391542-1A9E-A715-384A-BC891399B8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62391542-1A9E-A715-384A-BC891399B8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62391542-1A9E-A715-384A-BC891399B8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A40F934-2E97-43A5-AD27-7E7B9CF9409D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A40F934-2E97-43A5-AD27-7E7B9CF9409D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A40F934-2E97-43A5-AD27-7E7B9CF9409D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A40F934-2E97-43A5-AD27-7E7B9CF9409D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A40F934-2E97-43A5-AD27-7E7B9CF9409D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C18A0FC1-3526-4A16-BC7A-596C72F48F13}

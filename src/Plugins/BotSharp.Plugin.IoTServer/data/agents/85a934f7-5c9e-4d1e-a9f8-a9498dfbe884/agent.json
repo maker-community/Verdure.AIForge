@@ -1,0 +1,17 @@
+{
+  "id": "85a934f7-5c9e-4d1e-a9f8-a9498dfbe884",
+  "name": "IoT默认聊天智能体",
+  "description": "提供有趣的基础的对话能力",
+  "type": "task",
+  "createdDateTime": "2025-05-02T10:39:32Z",
+  "updatedDateTime": "2025-05-02T14:39:32Z",
+  "iconUrl": "/images/logo.png",
+  "disabled": false,
+  "isPublic": true,
+  "llmConfig": {
+    "is_inherit": false,
+    "provider": "azure-openai",
+    "model": "gpt-4o-mini",
+    "max_recursion_depth": 3
+  }
+}
