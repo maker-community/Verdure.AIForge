@@ -325,7 +325,7 @@ public class DialogueService
         }
 
         // 并发生成音频
-        var audioFuture = GenerateAudioAsync(sessionId, sentence, voiceName, sentenceNumber, modelResponseTime);
+        var audioFuture = GenerateAudioAsync(session, sessionId, sentence, voiceName, sentenceNumber, modelResponseTime);
 
         // 设置句子的音频Future
         pendingSentence.SetAudioFuture(audioFuture);
@@ -345,6 +345,7 @@ public class DialogueService
     /// 异步生成音频
     /// </summary>
     private Task<string> GenerateAudioAsync(
+        WebSocketSession session,
         string sessionId,
         string sentence,
         string voiceName,
@@ -377,7 +378,7 @@ public class DialogueService
                     sentenceNumber, modelResponseTime.ToString(_decimalFormat), (ttsDuration / 1000.0).ToString(_decimalFormat), sentence);
 
                 // 检查是否可以发送句子
-                CheckAndSendPendingSentences(null, sessionId);
+                CheckAndSendPendingSentences(session, sessionId);
 
                 return audioPath;
             }
