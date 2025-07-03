@@ -10,19 +10,11 @@
 		<OutputPath>$(SolutionDir)packages</OutputPath>
 	</PropertyGroup>
 
-
-	<ItemGroup>
-		<None Remove="silero_vad.onnx" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<Content Include="data\agents\85a934f7-5c9e-4d1e-a9f8-a9498dfbe884\agent.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Include="data\agents\85a934f7-5c9e-4d1e-a9f8-a9498dfbe884\instructions\instruction.liquid">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="silero_vad.onnx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
