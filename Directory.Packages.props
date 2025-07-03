@@ -95,7 +95,7 @@
     <PackageVersion Include="Microsoft.Playwright" Version="1.51.0" />
     <PackageVersion Include="Senparc.Weixin.MP.Middleware" Version="1.2.1" />
     <PackageVersion Include="System.Threading.Channels" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="9.0.6" />
     <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageVersion Include="Serilog.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Serilog.Sinks.OpenTelemetry" Version="3.0.0" />
@@ -132,7 +132,7 @@
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="BotSharp.Core" Version="5.0.0-verdure-sse-litedb-01" />
+    <PackageVersion Include="BotSharp.Core" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Logger" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Core.Realtime" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.OpenAPI" Version="$(BotSharpVersion)" />
@@ -145,6 +145,9 @@
     <PackageVersion Include="BotSharp.Plugin.LLamaSharp" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Plugin.ChatHub" Version="$(BotSharpVersion)" />
     <PackageVersion Include="BotSharp.Plugin.LiteDBStorage" Version="$(BotSharpVersion)" />
+    <PackageVersion Include="BotSharp.Plugin.EntityFrameworkCore.PostgreSql" Version="$(BotSharpVersion)" />
+    <PackageVersion Include="BotSharp.Plugin.PostgreSqlFileStorage" Version="$(BotSharpVersion)" />
+    <PackageVersion Include="BotSharp.Plugin.Pgvector" Version="$(BotSharpVersion)" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.14" />

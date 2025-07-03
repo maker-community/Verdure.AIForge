@@ -4,6 +4,8 @@ using BotSharp.Logger;
 using BotSharp.OpenAPI;
 using BotSharp.Plugin.ChatHub;
 using Scalar.AspNetCore;
+using BotSharp.Core.MCP;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,20 +22,39 @@ builder.Services.AddBotSharpCore(builder.Configuration, options =>
 {
     options.JsonSerializerOptions.Converters.Add(new RichContentJsonConverter());
     options.JsonSerializerOptions.Converters.Add(new TemplateMessageJsonConverter());
-}).AddBotSharpOpenAPI(builder.Configuration, allowedOrigins, builder.Environment, true)
+}).AddBotSharpOpenAPIWithOidcAuth(builder.Configuration, allowedOrigins, builder.Environment)
+  .AddBotSharpMCP(builder.Configuration)
   .AddBotSharpLogger(builder.Configuration);
-
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 
 // Add SignalR for WebSocket
 builder.Services.AddSignalR()
-    // Enable Redis backplane for SignalR
-    /*.AddStackExchangeRedis("127.0.0.1", o =>
+    .AddStackExchangeRedis(redis =>
     {
-        o.Configuration.ChannelPrefix = RedisChannel.Literal("botsharp");
-    })*/;
+        var redisConfiguration = builder.Configuration["Database:Redis"];
+        if (!string.IsNullOrEmpty(redisConfiguration))
+        {
+            var literal = builder.Environment.IsProduction() ? "ai-forge" : "ai-forge-dev";
+            redis.Configuration.ChannelPrefix = RedisChannel.Literal(literal);
+            redis.ConnectionFactory = async (writer) =>
+            {
+                var connection = await ConnectionMultiplexer.ConnectAsync(redisConfiguration);
+                connection.ConnectionFailed += (_, e) =>
+                {
+                    Console.WriteLine("Connection to Redis failed.");
+                };
+
+                if (!connection.IsConnected)
+                {
+                    Console.WriteLine("Did not connect to Redis.");
+                }
+                return connection;
+            };
+        }
+    });
+
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
@@ -64,27 +85,4 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference(); // 映射其他参考路径
 }
 
-string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
-app.MapDefaultEndpoints();
-
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

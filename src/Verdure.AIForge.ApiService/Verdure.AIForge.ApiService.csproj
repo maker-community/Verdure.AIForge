@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -27,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BotSharp.Core" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" />
     <PackageReference Include="Scalar.AspNetCore" />
 
 
@@ -41,8 +43,11 @@
 	<PackageReference Include="BotSharp.Plugin.MetaAI" />
 	<PackageReference Include="BotSharp.Plugin.LLamaSharp" />
 	<PackageReference Include="BotSharp.Plugin.ChatHub" />
-	<PackageReference Include="BotSharp.Plugin.LiteDBStorage" /> 
-	  
+	<PackageReference Include="BotSharp.Plugin.LiteDBStorage" />
+	<PackageReference Include="BotSharp.Plugin.EntityFrameworkCore.PostgreSql" />
+	<PackageReference Include="BotSharp.Plugin.PostgreSqlFileStorage" />
+	<PackageReference Include="BotSharp.Plugin.Pgvector" />
+
   </ItemGroup>
 	<Target Name="CombinedNugetPackage" BeforeTargets="PrepareForRun" Condition="$(SolutionName)=='Verdure.AIForge'">
 		<ItemGroup>
