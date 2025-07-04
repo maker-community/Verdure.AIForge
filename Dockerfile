@@ -14,11 +14,11 @@ COPY . .
 
 RUN dotnet restore
 
-RUN dotnet publish src/Verdure.AIForge.ApiService/Verdure.AIForge.ApiService.csproj -c Release -v d -o out
+RUN dotnet publish src/Verdure.AIForge.ApiService/Verdure.AIForge.ApiService.csproj -c Release -v d -o out --runtime linux-x64
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/out .
-EXPOSE 5500
-ENV ASPNETCORE_URLS=http://+:5500
-ENTRYPOINT ["dotnet", "Verdure.AIForge.ApiService.dll", "--urls", "http://*:5500"]
+EXPOSE 5241
+ENV ASPNETCORE_URLS=http://+:5241
+ENTRYPOINT ["dotnet", "Verdure.AIForge.ApiService.dll", "--urls", "http://*:5241"]
